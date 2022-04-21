@@ -1,33 +1,31 @@
-package lesson41.hw.dto;
+package hw.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotEmpty;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookDto {
+@Document(collection = "books")
+public class Book {
 
-    @NotNull
-    @Size(min = 1, max = 5)
+    @Id
     private String id;
 
     private String isbn;
 
-    @NotNull
-    @Size(min = 1, max = 200)
+    @NotEmpty
     private String name;
 
-    @NotNull
-    @Size(min = 1, max = 100)
+    @NotEmpty
     private String autor;
 
     private String market;
 
     private String size;
-
 }

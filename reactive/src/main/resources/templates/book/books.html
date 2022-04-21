@@ -11,7 +11,6 @@
             fillData();
         });
 
-
         function fillData(page) {
             $.get('/api/books' + (page ? '?page=' + page : ''), function (result) {
                 let rowsData = '';

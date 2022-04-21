@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css"/>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css" />
 </head>
+
 <body>
 <form id="add-form" th:action="@{/book/save}" th:if="${book == null}" method="post" action="book.html">
     <p><strong>Add new book:</strong></p>

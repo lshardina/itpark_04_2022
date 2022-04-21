@@ -1,8 +1,8 @@
-package lesson41.hw;
+package hw;
 
 import com.github.cloudyrock.spring.v5.EnableMongock;
-import lesson41.hw.model.Book;
-import lesson41.hw.repository.BookRepository;
+import hw.model.Book;
+import hw.repository.BookRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;

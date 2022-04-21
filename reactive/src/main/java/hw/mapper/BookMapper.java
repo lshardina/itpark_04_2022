@@ -1,7 +1,7 @@
-package lesson41.hw.mapper;
+package hw.mapper;
 
-import lesson41.hw.dto.BookDto;
-import lesson41.hw.model.Book;
+import hw.dto.BookDto;
+import hw.model.Book;
 import org.mapstruct.Mapper;
 
 import java.util.List;

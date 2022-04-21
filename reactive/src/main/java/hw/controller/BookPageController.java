@@ -1,8 +1,8 @@
-package lesson41.hw.controller;
+package hw.controller;
 
-import lesson41.hw.dto.BookDto;
-import lesson41.hw.mapper.BookMapper;
-import lesson41.hw.repository.BookRepository;
+import hw.dto.BookDto;
+import hw.mapper.BookMapper;
+import hw.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,5 +44,4 @@ public class BookPageController {
                 "redirect:/books"
         );
     }
-
 }

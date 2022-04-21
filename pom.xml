@@ -17,6 +17,7 @@
         <module>reactive</module>
     </modules>
 
+
     <properties>
         <spring.version>5.2.6.RELEASE</spring.version>
         <maven.compiler.source>17</maven.compiler.source>
