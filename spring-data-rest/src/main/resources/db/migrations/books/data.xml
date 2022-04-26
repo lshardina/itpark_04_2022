@@ -1,0 +1,42 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet author="LShardina" id="Populate-books">
+         <insert tableName="BOOKS">
+            <column name="ISBN" value="978-5-699-87803-1" />
+            <column name="NAME" value="Собор Парижской богоматери" />
+            <column name="AUTOR" value="Гюго Виктор" />
+            <column name="SIZE" value="592" />
+            <column name="MARKET" value="https://www.ozon.ru/" />
+        </insert>
+
+        <insert tableName="BOOKS">
+            <column name="ISBN" value="978-5-389-02646-9" />
+            <column name="NAME" value="Униженные и оскорбленные" />
+            <column name="AUTOR" value="Достоевский Федор" />
+            <column name="SIZE" value="432" />
+            <column name="MARKET" value="https://www.ozon.ru/" />
+        </insert>
+
+        <insert tableName="BOOKS">
+            <column name="ISBN" value="978-5-04-117023-3" />
+            <column name="NAME" value="Граф Монте-Кристо" />
+            <column name="AUTOR" value="Дюма Александр" />
+            <column name="SIZE" value="1088" />
+            <column name="MARKET" value="https://www.ozon.ru/" />
+        </insert>
+
+        <insert tableName="BOOKS">
+            <column name="ISBN" value="978-5-699-87803-1" />
+            <column name="NAME" value="Красное и черное"/>
+            <column name="AUTOR" value="Стендаль" />
+            <column name="SIZE" value="576" />
+            <column name="MARKET" value="https://www.ozon.ru/" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -12,9 +12,11 @@
     <modules>
         <module>common-dto</module>
         <module>base</module>
+        <module>batch</module>
         <module>another</module>
         <module>nosql</module>
         <module>reactive</module>
+        <module>spring-data-rest</module>
     </modules>
 
 

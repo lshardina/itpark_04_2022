@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Library</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css" />
+</head>
+
+<body>
+<form id="add-form" th:action="@{/book/save}" th:if="${book == null}" method="post" action="book.html">
+    <p><strong>Add new book:</strong></p>
+
+    <div class="row">
+        <label for="id-input">Id:</label>
+        <input id="id-input" name="id" type="number" required="required" maxlength="5"/>
+    </div>
+
+    <div class="row">
+        <label for="isbn-input">ISBN:</label>
+        <input id="isbn-input" name="isbn" type="text" required="required" maxlength="20"/>
+    </div>
+
+    <div class="row">
+        <label for="name-input">Name:</label>
+        <input id="name-input" name="name" type="text" required="required" maxlength="200"/>
+    </div>
+
+    <div class="row">
+        <label for="autor-input">Author:</label>
+        <input id="autor-input" name="autor" type="text" required="required" maxlength="100"/>
+    </div>
+
+    <div class="row">
+        <label for="market-input">Market:</label>
+        <input id="market-input" name="market" type="text" maxlength="50"/>
+    </div>
+
+    <div class="row">
+        <label for="size-input">Size:</label>
+        <input id="size-input" name="size" type="text" required="required" maxlength="5"/>
+    </div>
+
+
+    <div class="row">
+        <a th:href="@{/books}" href="books.html"><img title="Back" th:src="@{/images/back.png}"/></a>
+        <button type="submit"><img title="Save" th:src="@{/images/save.png}"/></button>
+    </div>
+</form>
+<form id="edit-form" th:action="@{/book/save(id=${book.id})}" th:unless="${book == null}" method="post"
+      action="book.html" th:object="${book}">
+    <p><strong>Book Info:</strong></p>
+
+    <div class="row">
+        <label for="id-input">Id:</label>
+        <input id="id-input" name="id" type="number" th:value="*{id}" readonly="readonly" value="1"/>
+    </div>
+
+    <div class="row">
+        <label for="isbn-input">ISBN:</label>
+        <input id="isbn-input" name="isbn" type="text" th:value="*{isbn}" maxlength="20" value="Art"/>
+    </div>
+
+    <div class="row">
+        <label for="name-input">Name:</label>
+        <input id="name-input" name="name" type="text" th:value="*{name}" required="required" maxlength="200"
+               value="Art"/>
+    </div>
+
+    <div class="row">
+        <label for="autor-input">Author:</label>
+        <input id="autor-input" name="autor" type="text" th:value="*{autor}" required="required" maxlength="100"
+               value="Art"/>
+    </div>
+
+    <div class="row">
+        <label for="market-input">Market:</label>
+        <input id="market-input" name="market" type="text" th:value="*{market}" maxlength="50" value="Art"/>
+    </div>
+
+    <div class="row">
+        <label for="size-input">Size:</label>
+        <input id="size-input" name="size" type="text" th:value="*{size}" required="required" maxlength="5"
+               value="Art"/>
+    </div>
+
+    <div class="row">
+        <a th:href="@{/books}" href="books.html"><img title="Back" th:src="@{/images/back.png}"/></a>
+        <button type="submit"><img title="Save" th:src="@{/images/save.png}"/></button>
+    </div>
+</form>
+</body>
+</html>
