@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Обмен валюты</title>
+    <link href="css/style-exchange.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/change.js"></script>
+</head>
+<body class="body">
+<h1 id="greeting">Добро пожаловать в Обменный пункт!</h1>
+<div class="block">
+    <label id="val_have" for="val1">У меня есть: </label>
+    <select class="dropdown-select1" id="val1" type="text" name="val1">
+        <option value="">выберите...</option>
+        <option value="RUB">Рубли</option>
+        <option value="USD">Доллары США</option>
+        <option value="EUR">Евро</option>
+        <option value="TRY">Турецкие лиры</option>
+        <option value="CNY">Китайские юани</option>
+        <option value="CZK">Чешские кроны</option>
+        <option value="JPY">Японские иены</option>
+    </select>
+</div>
+
+<div class="block">
+    <div>
+        <label id="val_need" for="val2">Хочу купить (выберите валюту): </label>
+        <select class="dropdown-select2" id="val2" type="text" name="val12">
+            <option value="">выберите...</option>
+            <option value="RUB">Рубли</option>
+            <option value="USD">Доллары США</option>
+            <option value="EUR">Евро</option>
+            <option value="TRY">Турецкие лиры</option>
+            <option value="CNY">Китайские юани</option>
+            <option value="CZK">Чешские кроны</option>
+            <option value="JPY">Японские иены</option>
+        </select>
+    </div>
+    <div>
+        <label id="amount_need" for="amount2">Сколько? (введите сумму): </label>
+        <input id="amount2" type="number" name="amount2"/>
+    </div>
+</div>
+
+<div class="block">
+    <button id="change">Обменять</button>
+</div>
+
+<div class="block">
+    <span id="result"></span>
+</div>
+
+
+</body>

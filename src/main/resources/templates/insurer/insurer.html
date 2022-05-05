@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>РУСТ</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}"
+          href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+</head>
+
+<!--<script>-->
+<!--    (function () {-->
+<!--        var num = Math.round(Math.random() * 16);-->
+<!--        document.querySelector('.input').value = 'bill[' + num + ']';-->
+<!--        //$("#regNum-input").val("bill[" + num + "]");-->
+<!--    })();-->
+<!--</script>-->
+
+<body>
+<form id="add-form" th:action="@{/insurer/save}" th:if="${insurer == null}" method="post" action="insurer.html">
+    <p><strong>Регистрация нового страхователя:</strong></p>
+
+    <!--    <div class="row">-->
+    <!--        <label for="id-input">Id:</label>-->
+    <!--        <input id="id-input" name="id" type="number" required="required" maxlength="5"/>-->
+    <!--    </div>-->
+
+
+    <div class="row">
+        <label for="regNum-input">Регистрационный номер:</label>
+<!--        <input id="regNum-input" name="regNum" type="number"  class="input" onclick="$(this).select();" readonly value="bill[]" />-->
+        <input id="regNum-input" name="regNum" type="number" readonly  class="input" onclick="value = Math.round(Math.random() * 10000000000)" />
+    </div>
+
+    <div class="row">
+        <label for="inn-input">ИНН:</label>
+        <input id="inn-input" name="inn" type="number" required="required" maxlength="12"/>
+    </div>
+
+    <div class="row">
+        <label for="ogrn-input">ОГРН:</label>
+        <input id="ogrn-input" name="ogrn" type="number" required="required" maxlength="14"/>
+    </div>
+
+    <div class="row">
+        <label for="name-input">Наименование:</label>
+        <input id="name-input" name="name" type="text" required="required" maxlength="255"/>
+    </div>
+
+    <div class="row">
+        <label for="kpr-input">КПР:</label>
+        <input id="kpr-input" name="kpr" type="number" maxlength="1"/>
+    </div>
+
+    <div class="row">
+        <label for="statement-input">Состояние:</label>
+        <input id="statement-input" name="statement" type="number" required="required" maxlength="2"/>
+    </div>
+
+    <div class="row">
+        <label for="kps-input">ТОФ/КПС:</label>
+        <input id="kps-input" name="kps" type="number" required="required" maxlength="4"/>
+    </div>
+
+    <!--    <div class="row">-->
+    <!--        <label for="dateIn-input">Дата постановки на учет:</label>-->
+    <!--        <input id="dateIn-input" name="dateIn" type="text" required="required" maxlength="8"/>-->
+    <!--    </div>-->
+
+    <!--    <div class="row">-->
+    <!--        <label for="dateOut-input">Дата снятия с учета:</label>-->
+    <!--        <input id="dateOut-input" name="dateOut" type="text" required="required" maxlength="8"/>-->
+    <!--    </div>-->
+
+
+    <div class="row">
+        <a th:href="@{/insurers}" href="insurers.html"><img title="Back" th:src="@{/images/back.png}"/></a>
+        <button type="submit"><img title="Подписать" th:src="@{/images/save.png}"/></button>
+    </div>
+</form>
+<form id="edit-form" th:action="@{/insurer/save(regNum=${insurer.regNum})}" th:unless="${insurer == null}" method="post"
+      action="insurer.html" th:object="${insurer}">
+    <p><strong>Данные страхователя:</strong></p>
+
+    <div class="row">
+        <label for="regNum-edit">Регистрационный номер:</label>
+        <input id="regNum-edit" name="regNum" type="number" th:value="*{regNum}" readonly="readonly" value="1"/>
+    </div>
+
+    <div class="row">
+        <label for="inn-input">ИНН:</label>
+        <input id="inn-input" name="inn" type="number" th:value="*{inn}" maxlength="20" value="Art"/>
+    </div>
+
+    <div class="row">
+        <label for="ogrn-input">ОГРН:</label>
+        <input id="ogrn-input" name="ogrn" type="number" th:value="*{ogrn}" required="required" maxlength="14"
+               value="Art"/>
+    </div>
+
+    <div class="row">
+        <label for="name-input">Наименование:</label>
+        <input id="name-input" name="name" type="text" th:value="*{name}" required="required" maxlength="255"
+               value="Art"/>
+    </div>
+
+    <div class="row">
+        <label for="kpr-input">КПР:</label>
+        <input id="kpr-input" name="kpr" type="number" th:value="*{kpr}" maxlength="1" value="Art"/>
+    </div>
+
+    <div class="row">
+        <label for="statement-input">Состояние:</label>
+        <input id="statement-input" name="statement" type="number" th:value="*{statement}" required="required"
+               maxlength="2"
+               value="Art"/>
+    </div>
+    <div class="row">
+        <label for="kps-input">КПС/ТОФ:</label>
+        <input id="kps-input" name="kps" type="number" th:value="*{kps}" required="required" maxlength="4"
+               value="Art"/>
+    </div>
+    <!--    <div class="row">-->
+    <!--        <label for="dateIn-input">Дата постановки на учет:</label>-->
+    <!--        <input id="dateIn-input" name="dateIn" type="date" th:value="*{dateIn}" required="required" maxlength="8"-->
+    <!--               value="Art"/>-->
+    <!--    </div>-->
+    <!--    <div class="row">-->
+    <!--        <label for="dateOut-input">Дата снятия с учета:</label>-->
+    <!--        <input id="dateOut-input" name="dateOut" type="date" th:value="*{dateOut}" required="required" maxlength="8"-->
+    <!--               value="Art"/>-->
+    <!--    </div>-->
+
+    <div class="row">
+        <a th:href="@{/insurers}" href="insurers.html"><img title="Back" th:src="@{/images/back.png}"/></a>
+        <button type="submit"><img title="Подписать" th:src="@{/images/save.png}"/></button>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="LShardina" id="Create-table-KPR">
+        <preConditions>
+            <not>
+                <tableExists tableName="KPR"/>
+            </not>
+        </preConditions>
+        <createTable tableName="KPR">
+            <column name="KPR_CODE" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="KPR_NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="LShardina" id="Create-table-okved">
+        <preConditions>
+            <not>
+                <tableExists tableName="OKVED"/>
+            </not>
+        </preConditions>
+        <createTable tableName="OKVED">
+            <!--            <column name="OKVED_ID" type="BIGINT" autoIncrement="true">-->
+            <!--                <constraints nullable="false" primaryKey="true"/>-->
+            <!--            </column>-->
+            <column name="OKVED_CODE" type="VARCHAR(8)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="OKVED_NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="OKVED_CLASS" type="INT(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="OKVED_TARIF" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="LShardina" id="Create-table-TOF">
+        <preConditions>
+            <not>
+                <tableExists tableName="TOF"/>
+            </not>
+        </preConditions>
+        <createTable tableName="TOF">
+            <column name="TOF_CODE" type="INT(4)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="TOF_NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="LShardina" id="Create-table-Statement_Ins">
+        <preConditions>
+            <not>
+                <tableExists tableName="STATEMENT_INS"/>
+            </not>
+        </preConditions>
+        <createTable tableName="STATEMENT_INS">
+            <column name="STATE_CODE" type="INT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="STATE_NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="LShardina" id="Create-table-Insurer_OKVED">
+        <preConditions>
+            <not>
+                <tableExists tableName="INSURER_OKVED"/>
+            </not>
+        </preConditions>
+        <createTable tableName="INSURER_OKVED">
+            <column name="ID" type="INT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="INS_REG_NUM" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="OKVED_CODE" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="LShardina" id="Create-table-Insurers">
+        <preConditions>
+            <not>
+                <tableExists tableName="INSURERS"/>
+            </not>
+        </preConditions>
+        <createTable tableName="INSURERS">
+            <!--            <column name="CODE" type="BIGINT" autoIncrement="true">-->
+            <!--                <constraints nullable="false" primaryKey="true"/>-->
+            <!--            </column>-->
+            <column name="REG_NUM" type="VARCHAR(10)">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="INN" type="BIGINT(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="OGRN" type="BIGINT(14)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="KPR_CODE" type="INT(4)">
+                <constraints nullable="false" foreignKeyName="FK_INS_KPR"
+                             references="KPR(KPR_CODE)"/>
+            </column>
+            <column name="STATE_CODE" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_INS_STATEMENT"
+                             references="STATEMENT_INS(STATE_CODE)"/>
+            </column>
+            <column name="KPS_CODE" type="INT(4)">
+                <constraints nullable="false" foreignKeyName="FK_INS_KPS"
+                             references="TOF(TOF_CODE)"/>
+            </column>
+<!--            <column name="DATE_IN" type="VARCHAR(20)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="DATE_OUT" type="VARCHAR(20)">-->
+<!--                <constraints nullable="true"/>-->
+<!--            </column>-->
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
